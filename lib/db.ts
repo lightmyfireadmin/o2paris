@@ -58,8 +58,8 @@ export const SEED_PINPOINTS: Omit<Pinpoint, 'id' | 'created_at' | 'updated_at'>[
     icon: '🌊',
   },
   {
-    latitude: 48.872,
-    longitude: 2.365,
+    latitude: 48.8720,
+    longitude: 2.3650,
     title: 'Canal Saint-Martin',
     description: 'Le clapotis de l’eau près des écluses.',
     sound_url: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_243a828eed.mp3?filename=small-river-in-forest-loop-116199.mp3',
