@@ -25,21 +25,7 @@ node scripts/generate-password.js votre_mot_de_passe_securise
 
 Notez le hash généré, vous en aurez besoin pour Vercel.
 
-## Étape 3 : Génération du Secret d'Authentification
-
-Sur Linux/Mac :
-```bash
-openssl rand -base64 32
-```
-
-Sur Windows (PowerShell) :
-```powershell
-[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }))
-```
-
-Notez ce secret.
-
-## Étape 4 : Déploiement sur Vercel
+## Étape 3 : Déploiement sur Vercel
 
 1. Connectez-vous à https://vercel.com
 2. Cliquez sur "Add New Project"
@@ -47,7 +33,6 @@ Notez ce secret.
 4. Configurez les variables d'environnement :
    - `DATABASE_URL` : Votre chaîne de connexion Neon
    - `ADMIN_PASSWORD_HASH` : Le hash bcrypt généré à l'étape 2
-   - `NEXTAUTH_SECRET` : Le secret généré à l'étape 3
 
 5. Cliquez sur "Deploy"
 
@@ -64,7 +49,7 @@ Si vous rencontrez une erreur, vérifiez que `DATABASE_URL` est correctement con
 ## Étape 6 : Premier Accès à l'Administration
 
 1. Visitez : `https://votre-app.vercel.app/admin`
-2. Connectez-vous avec le mot de passe que vous avez utilisé à l'étape 2
+2. Connectez-vous avec le mot de passe que vous avez utilisé pour générer le hash à l'étape 2
 3. Commencez à ajouter des points sonores !
 
 ## Configuration du Domaine Personnalisé (Optionnel)
@@ -165,6 +150,6 @@ Pour toute question ou problème, ouvrez une issue sur GitHub.
 
 - Ne partagez jamais votre `DATABASE_URL`
 - Ne partagez jamais votre `ADMIN_PASSWORD_HASH`
-- Ne partagez jamais votre `NEXTAUTH_SECRET`
-- Utilisez des mots de passe forts
+- Utilisez des mots de passe forts (minimum 12 caractères)
 - Changez régulièrement votre mot de passe admin
+- En production, assurez-vous que `ADMIN_PASSWORD_HASH` est toujours défini

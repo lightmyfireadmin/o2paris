@@ -22,8 +22,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create a simple session token (in production, use proper JWT or session management)
-    const token = Buffer.from(`${Date.now()}-${Math.random()}`).toString('base64');
+    // Create a secure session token using crypto
+    const crypto = require('crypto');
+    const token = crypto.randomBytes(32).toString('base64');
 
     const response = NextResponse.json({ success: true });
     response.cookies.set('admin_token', token, {

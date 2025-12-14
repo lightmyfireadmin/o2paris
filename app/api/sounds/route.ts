@@ -24,12 +24,12 @@ export async function GET(request: NextRequest) {
 
     const sound = result[0];
     
-    // Return the audio file
+    // Return the audio file with reasonable caching (1 day)
     return new NextResponse(sound.data, {
       headers: {
         'Content-Type': sound.mime_type,
         'Content-Length': sound.size.toString(),
-        'Cache-Control': 'public, max-age=31536000',
+        'Cache-Control': 'public, max-age=86400, immutable',
       },
     });
   } catch (error) {
