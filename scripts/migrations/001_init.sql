@@ -53,4 +53,6 @@ FROM (VALUES
 ) AS seed(latitude, longitude, title, description, sound_url, icon)
 WHERE NOT EXISTS (SELECT 1 FROM pinpoints);
 
+-- Remplacez les URLs par vos propres fichiers hébergés de façon pérenne pour la production.
+
 COMMIT;

@@ -55,7 +55,8 @@ export default function AdminPage() {
       setSounds(soundsData);
     } catch (err) {
       console.error('Error loading data:', err);
-      setStatus('Impossible de charger les données. Vérifiez la base de données puis réessayez.');
+      const message = err instanceof Error ? err.message : 'erreur inconnue';
+      setStatus(`Impossible de charger les données. Vérifiez la base de données puis réessayez. (${message})`);
     }
   };
 

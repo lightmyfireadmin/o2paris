@@ -24,8 +24,8 @@ const escapeHtml = (value: string) =>
 // Custom water-themed marker icon
 const createWaterIcon = (icon?: string) => {
   const raw = (icon || '💧').trim();
-  // Allow only short, safe symbols to avoid injection
-  const safe = /^[\p{L}\p{N}\p{P}\p{S}]{1,4}$/u.test(raw) ? raw : '💧';
+  // Allow only short, safe symbols (letters, numbers, emoji). Default otherwise.
+  const safe = /^[\p{L}\p{N}\p{Emoji_Presentation}\p{Emoji}]{1,4}$/u.test(raw) ? raw : '💧';
   const symbol = escapeHtml(safe);
   return L.divIcon({
     className: 'custom-marker',
