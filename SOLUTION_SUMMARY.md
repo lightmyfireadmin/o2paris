@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-**Issue**: Sounds are not being played when clicked (fall backs to beep instead)
+**Issue**: Sounds are not being played when clicked (falls back to beep instead)
 
 **Cause**: The `DATABASE_URL` environment variable was not configured, causing the application to use fallback pinpoints with external CDN URLs (Pixabay) that may be blocked, rate-limited, or unavailable.
 

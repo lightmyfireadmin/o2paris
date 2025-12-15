@@ -18,7 +18,11 @@ Sounds are not being played when clicked (falling back to beep sound instead). T
 ```
 postgresql://username:password@host.region.neon.tech/dbname?sslmode=require
 ```
-Replace with your actual Neon PostgreSQL connection string from https://neon.tech
+Example format (replace with your actual connection string):
+```
+postgresql://neondb_owner:abc123xyz@ep-quiet-hat-12345678-pooler.eu-central-1.neon.tech/neondb?sslmode=require
+```
+Get your actual connection string from https://neon.tech dashboard
 
 **ADMIN_PASSWORD_HASH**
 

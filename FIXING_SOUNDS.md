@@ -231,8 +231,11 @@ Before uploading, optimize your audio:
 
 ```bash
 # Using ffmpeg (if installed)
-# Reduce bitrate to 128kbps, convert to MP3
+# For stereo (2 channels):
 ffmpeg -i input.wav -b:a 128k -ac 2 output.mp3
+
+# For mono (1 channel, smaller file size):
+ffmpeg -i input.wav -b:a 128k -ac 1 output.mp3
 
 # Or use online tools:
 # - https://www.freeconvert.com/audio-compressor
