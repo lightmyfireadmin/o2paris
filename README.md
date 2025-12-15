@@ -2,6 +2,8 @@
 
 Carte sonore interactive pour un projet en collaboration avec Eau de Paris
 
+> **🔊 Sounds Not Playing?** If sounds fall back to beep when clicked, see [FIXING_SOUNDS.md](./FIXING_SOUNDS.md) for the complete solution.
+
 ## Description
 
 O2Paris est une application de carte interactive qui affiche la ville de Paris avec des points sonores. Chaque point peut être cliqué pour afficher un tooltip avec un texte et des contrôles audio (lecture/pause) qui déclenchent des sons hébergés sur Neon PostgreSQL. L'application suit un thème aquatique en lien avec l'institution publique Eau de Paris.
