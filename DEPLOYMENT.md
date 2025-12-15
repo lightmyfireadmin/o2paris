@@ -15,7 +15,9 @@ Ce guide vous aidera à déployer l'application O2Paris sur Vercel avec une base
 3. Notez la chaîne de connexion (elle ressemble à : `postgresql://user:password@host.region.neon.tech/dbname`)
 4. La base de données sera automatiquement créée
 
-## Étape 2 : Choix du Mot de Passe Admin
+**Note**: Si vous avez déjà une base de données Neon, utilisez votre chaîne de connexion existante.
+
+## Étape 2 : Génération du Mot de Passe Admin
 
 Choisissez un mot de passe fort pour votre compte administrateur. Utilisez au minimum 12 caractères avec une combinaison de lettres, chiffres et symboles.
 
