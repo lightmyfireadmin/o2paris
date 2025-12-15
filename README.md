@@ -170,6 +170,21 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou un
 
 Ce projet est développé pour Eau de Paris.
 
+## Documentation Complète
+
+| Document | Description |
+|----------|-------------|
+| **[QUICK_FIX.md](./QUICK_FIX.md)** | ⚡ Solution rapide (5 min) pour problèmes de son |
+| **[FIXING_SOUNDS.md](./FIXING_SOUNDS.md)** | 🔊 Guide complet pour réparer la lecture audio |
+| **[VERCEL_SETUP.md](./VERCEL_SETUP.md)** | ⚙️ Configuration Vercel et variables d'environnement |
+| **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** | 🔧 Dépannage et solutions aux problèmes courants |
+| **[DATABASE_CONFIG_NOTES.md](./DATABASE_CONFIG_NOTES.md)** | 🗄️ Notes sur la configuration de la base de données |
+| **[DEPLOYMENT.md](./DEPLOYMENT.md)** | 🚀 Guide de déploiement complet |
+| **[QUICKSTART.md](./QUICKSTART.md)** | ⏱️ Démarrage rapide (5 minutes) |
+| **[ARCHITECTURE.md](./ARCHITECTURE.md)** | 🏗️ Architecture technique détaillée |
+| **[CONTRIBUTING.md](./CONTRIBUTING.md)** | 🤝 Guide pour contributeurs |
+| **[PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)** | 📋 Résumé du projet |
+
 ## Support
 
 Pour toute question ou problème, veuillez ouvrir une issue sur GitHub.
