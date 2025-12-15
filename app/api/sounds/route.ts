@@ -1,6 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { hasValidDatabaseUrl, sql } from '@/lib/db';
 
+const toBuffer = (data: unknown) => {
+  if (typeof data === 'string') {
+    const cleaned = data.replace(/^(?:0x|\\x)/i, '');
+    return Buffer.from(cleaned, 'hex');
+  }
+  if (Buffer.isBuffer(data)) {
+    return data;
+  }
+  if (data instanceof Uint8Array) {
+    return Buffer.from(data);
+  }
+  if (data instanceof ArrayBuffer) {
+    return Buffer.from(data);
+  }
+  throw new Error('Unsupported sound data format');
+};
+
 export async function GET(request: NextRequest) {
   try {
     if (!hasValidDatabaseUrl) {
@@ -30,9 +47,7 @@ export async function GET(request: NextRequest) {
     }
 
     const sound = result[0];
-    const binaryData = typeof sound.data === 'string'
-      ? Buffer.from(sound.data.replace(/^\\x/, ''), 'hex')
-      : Buffer.from(sound.data);
+    const binaryData = toBuffer(sound.data);
     
     // Return the audio file with reasonable caching (1 day)
     return new NextResponse(binaryData, {

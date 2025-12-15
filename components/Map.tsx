@@ -195,7 +195,12 @@ export default function Map({ pinpoints, config }: MapProps) {
   const uniquePinpoints = useMemo(() => {
     const seen = new Set<string>();
     return pinpoints.filter((pinpoint) => {
-      const key = `${pinpoint.title}-${pinpoint.latitude}-${pinpoint.longitude}`;
+      const key = JSON.stringify([
+        pinpoint.latitude,
+        pinpoint.longitude,
+        pinpoint.title,
+        pinpoint.sound_url,
+      ]);
       if (seen.has(key)) {
         return false;
       }
