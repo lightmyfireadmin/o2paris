@@ -11,7 +11,14 @@ export const hasValidDatabaseUrl = Boolean(
   isValidDatabaseUrl(process.env.DATABASE_URL) &&
   process.env.DATABASE_URL !== PLACEHOLDER_DB_URL
 );
-export const sql = neon(DATABASE_URL);
+
+// Create SQL client with proper configuration
+// fullResults: false returns rows directly (default behavior)
+// arrayMode: false returns rows as objects (default behavior)
+export const sql = neon(DATABASE_URL, {
+  fullResults: false,
+  arrayMode: false,
+});
 
 export interface Pinpoint {
   id: number;

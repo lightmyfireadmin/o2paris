@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { hasValidDatabaseUrl, sql } from '@/lib/db';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   try {
     if (!hasValidDatabaseUrl) {
@@ -17,7 +21,11 @@ export async function GET() {
       latitude: Number(p.latitude),
       longitude: Number(p.longitude),
     }));
-    return NextResponse.json(normalizedPinpoints);
+    return NextResponse.json(normalizedPinpoints, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      },
+    });
   } catch (error) {
     console.error('Error fetching pinpoints:', error);
     return NextResponse.json(

@@ -1,24 +1,42 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { DEFAULT_MAP_CONFIG, hasValidDatabaseUrl, sql } from '@/lib/db';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   try {
     if (!hasValidDatabaseUrl) {
-      return NextResponse.json({
-        ...DEFAULT_MAP_CONFIG,
-      });
+      return NextResponse.json(
+        { ...DEFAULT_MAP_CONFIG },
+        {
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+          },
+        }
+      );
     }
 
     const configs = await sql`SELECT * FROM map_config ORDER BY id DESC LIMIT 1`;
     
     if (configs.length === 0) {
       // Return default config
-      return NextResponse.json({
-        ...DEFAULT_MAP_CONFIG,
-      });
+      return NextResponse.json(
+        { ...DEFAULT_MAP_CONFIG },
+        {
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+          },
+        }
+      );
     }
 
-    return NextResponse.json(configs[0]);
+    return NextResponse.json(configs[0], {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      },
+    });
   } catch (error) {
     console.error('Error fetching config:', error);
     return NextResponse.json(
