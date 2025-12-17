@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { hasValidDatabaseUrl, sql } from '@/lib/db';
 
-// Force dynamic rendering and disable caching for list
-// Individual sound files will still be cached via Cache-Control headers
+// Force dynamic rendering and disable caching
+// Note: The sounds list (no id param) is not cached
+// Individual sound file data (with id param) is cached for 1 day for performance
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
