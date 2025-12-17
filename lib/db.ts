@@ -73,6 +73,38 @@ export const PRESET_TILE_LAYERS = [
     description: 'Carte classique OpenStreetMap'
   },
   {
+    id: 'osm-fr',
+    name: 'OpenStreetMap France',
+    url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap France | © OpenStreetMap contributors',
+    preview: '🇫🇷',
+    description: 'OpenStreetMap avec style français'
+  },
+  {
+    id: 'osm-hot',
+    name: 'OpenStreetMap Humanitarian',
+    url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap contributors, Tiles style by HOT',
+    preview: '🏥',
+    description: 'Style humanitaire axé sur les routes'
+  },
+  {
+    id: 'opentopomap',
+    name: 'OpenTopoMap',
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)',
+    preview: '🏔️',
+    description: 'Carte topographique avec relief'
+  },
+  {
+    id: 'cyclosm',
+    name: 'CyclOSM',
+    url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap contributors, CyclOSM',
+    preview: '🚲',
+    description: 'Carte optimisée pour les cyclistes'
+  },
+  {
     id: 'carto-light',
     name: 'CartoDB Positron (Clair)',
     url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -97,28 +129,36 @@ export const PRESET_TILE_LAYERS = [
     description: 'Style coloré et moderne'
   },
   {
-    id: 'stamen-toner',
-    name: 'Stamen Toner',
-    url: 'https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.png',
-    attribution: '© Stadia Maps © Stamen Design © OpenStreetMap contributors',
-    preview: '⬛',
-    description: 'Noir et blanc contrasté'
+    id: 'carto-light-nolabels',
+    name: 'CartoDB Positron (Sans libellés)',
+    url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+    attribution: '© CartoDB © OpenStreetMap contributors',
+    preview: '⬜',
+    description: 'Fond clair sans texte'
   },
   {
-    id: 'stamen-watercolor',
-    name: 'Stamen Watercolor',
-    url: 'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-    attribution: '© Stadia Maps © Stamen Design © OpenStreetMap contributors',
-    preview: '🎨',
-    description: 'Effet aquarelle artistique'
+    id: 'esri-street',
+    name: 'Esri World Street Map',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles © Esri',
+    preview: '🛣️',
+    description: 'Carte routière classique'
   },
   {
     id: 'esri-world-topo',
     name: 'Esri World Topographic',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
     attribution: '© Esri',
-    preview: '🏔️',
+    preview: '⛰️',
     description: 'Carte topographique détaillée'
+  },
+  {
+    id: 'esri-imagery',
+    name: 'Esri World Imagery',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles © Esri',
+    preview: '🛰️',
+    description: 'Imagerie satellite'
   },
   {
     id: 'esri-natgeo',
@@ -127,6 +167,30 @@ export const PRESET_TILE_LAYERS = [
     attribution: '© Esri © National Geographic',
     preview: '🌍',
     description: 'Style National Geographic'
+  },
+  {
+    id: 'esri-ocean',
+    name: 'Esri Ocean Basemap',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles © Esri',
+    preview: '🌊',
+    description: 'Océans et bathymétrie'
+  },
+  {
+    id: 'esri-relief',
+    name: 'Esri World Shaded Relief',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles © Esri',
+    preview: '🗻',
+    description: 'Relief ombré neutre'
+  },
+  {
+    id: 'esri-terrain',
+    name: 'Esri World Terrain Base',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles © Esri',
+    preview: '🏜️',
+    description: 'Base de terrain minimaliste'
   }
 ];
 
