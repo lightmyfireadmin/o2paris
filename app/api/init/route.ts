@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { SEED_PINPOINTS, hasValidDatabaseUrl, initDatabase } from '@/lib/db';
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   try {
     if (!hasValidDatabaseUrl) {

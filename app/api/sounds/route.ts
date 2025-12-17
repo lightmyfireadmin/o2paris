@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { hasValidDatabaseUrl, sql } from '@/lib/db';
 
+// Force dynamic rendering and disable caching for list
+// Individual sound files will still be cached via Cache-Control headers
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     if (!hasValidDatabaseUrl) {
@@ -16,7 +21,11 @@ export async function GET(request: NextRequest) {
     if (!id) {
       // List all sounds
       const sounds = await sql`SELECT id, filename, mime_type, size, created_at FROM sounds ORDER BY id DESC`;
-      return NextResponse.json(sounds);
+      return NextResponse.json(sounds, {
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        },
+      });
     }
 
     // Get specific sound
