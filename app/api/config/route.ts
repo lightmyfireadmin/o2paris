@@ -58,6 +58,23 @@ export async function PUT(request: NextRequest) {
     const body = await request.json();
     const { tile_layer_url, center_lat, center_lng, zoom_level, max_zoom, min_zoom, attribution, background_theme } = body;
 
+    // Validate required numeric fields
+    const numericFields = [center_lat, center_lng, zoom_level, max_zoom, min_zoom];
+    if (!numericFields.every(field => typeof field === 'number' && !isNaN(field))) {
+      return NextResponse.json(
+        { error: 'Invalid configuration: All numeric fields must have valid values' },
+        { status: 400 }
+      );
+    }
+
+    // Validate tile_layer_url is not empty
+    if (!tile_layer_url?.trim()) {
+      return NextResponse.json(
+        { error: 'Invalid configuration: Tile layer URL is required' },
+        { status: 400 }
+      );
+    }
+
     // Get the current config ID
     const currentConfig = await sql`SELECT id FROM map_config ORDER BY id DESC LIMIT 1`;
     
@@ -65,7 +82,7 @@ export async function PUT(request: NextRequest) {
       // Insert new config
       const result = await sql`
         INSERT INTO map_config (tile_layer_url, center_lat, center_lng, zoom_level, max_zoom, min_zoom, attribution, background_theme)
-        VALUES (${tile_layer_url}, ${center_lat}, ${center_lng}, ${zoom_level}, ${max_zoom}, ${min_zoom}, ${attribution}, ${background_theme || 'water'})
+        VALUES (${tile_layer_url}, ${center_lat}, ${center_lng}, ${zoom_level}, ${max_zoom}, ${min_zoom}, ${attribution || ''}, ${background_theme || 'water'})
         RETURNING *
       `;
       return NextResponse.json(result[0]);
@@ -81,7 +98,7 @@ export async function PUT(request: NextRequest) {
         zoom_level = ${zoom_level},
         max_zoom = ${max_zoom},
         min_zoom = ${min_zoom},
-        attribution = ${attribution},
+        attribution = ${attribution || ''},
         background_theme = ${background_theme || 'water'},
         updated_at = CURRENT_TIMESTAMP
       WHERE id = ${currentConfig[0].id}
