@@ -51,7 +51,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Convert to Buffer if needed (Neon returns BYTEA as Buffer or Uint8Array)
+    // Convert to Buffer if needed
+    // Neon returns BYTEA as Buffer by default, but may return Uint8Array in some configurations
+    // This ensures we always work with a Buffer for consistent handling
     const audioData = Buffer.isBuffer(sound.data) ? sound.data : Buffer.from(sound.data);
     
     // Return the audio file with reasonable caching (1 day)
