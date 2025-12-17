@@ -1019,12 +1019,13 @@ export default function AdminPage() {
                         type="number"
                         step="0.000001"
                         value={config.center_lat || ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const value = parseFloat(e.target.value);
                           setConfig({
                             ...config,
-                            center_lat: parseFloat(e.target.value),
-                          })
-                        }
+                            center_lat: isNaN(value) ? config.center_lat : value,
+                          });
+                        }}
                         className="water-input w-full"
                       />
                     </div>
@@ -1036,12 +1037,13 @@ export default function AdminPage() {
                         type="number"
                         step="0.000001"
                         value={config.center_lng || ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const value = parseFloat(e.target.value);
                           setConfig({
                             ...config,
-                            center_lng: parseFloat(e.target.value),
-                          })
-                        }
+                            center_lng: isNaN(value) ? config.center_lng : value,
+                          });
+                        }}
                         className="water-input w-full"
                       />
                     </div>
@@ -1055,12 +1057,13 @@ export default function AdminPage() {
                       <input
                         type="number"
                         value={config.zoom_level || ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value);
                           setConfig({
                             ...config,
-                            zoom_level: parseInt(e.target.value),
-                          })
-                        }
+                            zoom_level: isNaN(value) ? config.zoom_level : value,
+                          });
+                        }}
                         className="water-input w-full"
                       />
                     </div>
@@ -1071,12 +1074,13 @@ export default function AdminPage() {
                       <input
                         type="number"
                         value={config.min_zoom || ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value);
                           setConfig({
                             ...config,
-                            min_zoom: parseInt(e.target.value),
-                          })
-                        }
+                            min_zoom: isNaN(value) ? config.min_zoom : value,
+                          });
+                        }}
                         className="water-input w-full"
                       />
                     </div>
@@ -1087,12 +1091,13 @@ export default function AdminPage() {
                       <input
                         type="number"
                         value={config.max_zoom || ""}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value);
                           setConfig({
                             ...config,
-                            max_zoom: parseInt(e.target.value),
-                          })
-                        }
+                            max_zoom: isNaN(value) ? config.max_zoom : value,
+                          });
+                        }}
                         className="water-input w-full"
                       />
                     </div>
