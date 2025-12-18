@@ -75,7 +75,9 @@ export default function ConfigForm({ config: initialConfig, onSave }: ConfigForm
       alert('Erreur lors du téléversement.');
     } finally {
       setUploadingBackground(false);
-      e.target.value = ''; // Reset input
+      if (e.target) {
+        e.target.value = ''; // Reset input
+      }
     }
   };
 

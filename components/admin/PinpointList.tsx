@@ -81,7 +81,9 @@ export default function PinpointList({ pinpoints, sounds, onSave, onDelete }: Pi
       alert('Erreur lors du téléversement.');
     } finally {
       setUploadingIcon(false);
-      e.target.value = ''; // Reset input
+      if (e.target) {
+        e.target.value = ''; // Reset input
+      }
     }
   };
 
