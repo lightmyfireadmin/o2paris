@@ -154,8 +154,13 @@ Before you begin, make sure you have:
 #### 1. Clone the Repository
 
 ```bash
+# Clone the original repository
 git clone https://github.com/mitchlabeetch/o2paris.git
 cd o2paris
+
+# Or if you forked it, clone your fork:
+# git clone https://github.com/YOUR_USERNAME/o2paris.git
+# cd o2paris
 ```
 
 #### 2. Install Dependencies
